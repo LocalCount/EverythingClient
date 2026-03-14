@@ -34,16 +34,23 @@ Example URLs:
 This project was vibe coded using Claude, Codex, and Gemini.
 
 <h2><strong>Screenshots</strong></h2>
-<p float="left">
-  <img src="Screenshots/Screenshot_20260314-125815_EverythingClient.jpg" width="24%" />
-  <img src="Screenshots/Screenshot_20260314-125823_EverythingClient.jpg" width="24%" />
-  <img src="Screenshots/Screenshot_20260314-125833_EverythingClient.jpg" width="24%" />
-  <img src="Screenshots/Screenshot_20260314-125843_EverythingClient.jpg" width="24%" />
-  <img src="Screenshots/Screenshot_20260314-125902_EverythingClient.jpg" width="24%" />
-  <img src="Screenshots/Screenshot_20260314-125906_EverythingClient.jpg" width="24%" />
-  <img src="Screenshots/Screenshot_20260314-125925_EverythingClient.jpg" width="24%" />
-  <img src="Screenshots/Screenshot_20260314-125934_EverythingClient.jpg" width="24%" />
-</p>
+<div>
+  <img src="screenshots/01_search_screen_amoled.jpg" alt="Search screen (AMOLED)" />
+  <img src="screenshots/01_search_screen_dark.jpg" alt="Search screen (dark)" />
+  <img src="screenshots/01_search_screen_light.jpg" alt="Search screen (light)" />
+  <br />
+  <img src="screenshots/02_queue_screen_amoled.jpg" alt="Queue screen (AMOLED)" />
+  <img src="screenshots/02_queue_screen_dark.jpg" alt="Queue screen (dark)" />
+  <img src="screenshots/02_queue_screen_light.jpg" alt="Queue screen (light)" />
+  <br />
+  <img src="screenshots/03_drawer_amoled.jpg" alt="Navigation drawer (AMOLED)" />
+  <img src="screenshots/03_drawer_dark.jpg" alt="Navigation drawer (dark)" />
+  <img src="screenshots/03_drawer_light.jpg" alt="Navigation drawer (light)" />
+  <br />
+  <img src="screenshots/04_settings_screen_amoled.jpg" alt="Settings screen (AMOLED)" />
+  <img src="screenshots/04_settings_screen_dark.jpg" alt="Settings screen (dark)" />
+  <img src="screenshots/04_settings_screen_light.jpg" alt="Settings screen (light)" />
+</div>
 
 <h2><strong>Build</strong></h2>
 1. Open the project in Android Studio.
