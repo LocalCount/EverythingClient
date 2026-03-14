@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?><!--
+   Backup rules template; customize as needed.
+   Applies only to newer platform versions.
+-->
+<full-backup-content>
+    <!--
+   <include .../>
+   <exclude .../>
+-->
+</full-backup-content>
