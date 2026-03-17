@@ -1,7 +1,15 @@
-# EverythingClient
+<h1 style="text-align: center;">
+  <img src="assets/logo.svg" width="38" style="vertical-align: middle;" alt="EverythingClient Logo">
+  EverythingClient
+</h1>
 
-An Android frontend client for browsing and downloading files from an Everything HTTP server, with a fast, modern UI.
+<p style="text-align: center;">
+  An Android frontend client for browsing and downloading files from an Everything HTTP server, with a fast, modern UI.
+</p>
 
+---
+
+## Disclaimer
 This project was vibe coded using Claude, Codex, and Gemini.
 
 ## Everything Server (by voidtools)
@@ -12,89 +20,40 @@ Official links:
 - [How to setup the plugin](https://voidtools.com/support/everything/options/#http_server)
 
 ## Features
-- Fast search across indexed files with filter and sort controls.
-- Scope search to current location or search globally.
-- Queue downloads with progress, pause, and resume support.
-- Dedicated queue screen for active, paused, and completed items.
-- Multi-part downloads to improve throughput on large files.
-- Server profiles with quick switching and connection testing.
-- Download path selection with Storage Access Framework support.
-- Theme options including light, dark, and AMOLED variants.
+- **Fast Search**: Across indexed files with filter and sort controls.
+- **Scoped Search**: Search within the current location or globally.
+- **Advanced Downloads**: Queue downloads with progress, pause, and resume support.
+- **Multi-part Downloads**: Improve throughput on large files.
+- **Dedicated Queue**: Manage active, paused, and completed items.
+- **Server Profiles**: Quick switching and connection testing.
+- **Modern UI**: Light, Dark, and AMOLED theme variants.
 
-## Tech
-- Kotlin + Jetpack Compose
-- Hilt for DI
-- Paging 3 for large result sets
+## Tech Stack
+- **Kotlin + Jetpack Compose**
+- **Hilt** (Dependency Injection)
+- **Paging 3** (Handling large result sets)
 
 ## Screenshots
-<table>
+<table style="margin-left: auto; margin-right: auto;">
   <tr>
-    <td>
-      <a href="screenshots/01_search_screen_amoled.jpg">
-        <img src="screenshots/thumbs/01_search_screen_amoled.jpg" alt="Search screen (AMOLED)" width="200" />
-      </a>
-    </td>
-    <td>
-      <a href="screenshots/01_search_screen_dark.jpg">
-        <img src="screenshots/thumbs/01_search_screen_dark.jpg" alt="Search screen (dark)" width="200" />
-      </a>
-    </td>
-    <td>
-      <a href="screenshots/01_search_screen_light.jpg">
-        <img src="screenshots/thumbs/01_search_screen_light.jpg" alt="Search screen (light)" width="200" />
-      </a>
-    </td>
+    <td><img src="screenshots/thumbs/01_search_screen_amoled.jpg" width="200" alt="Search screen AMOLED" /></td>
+    <td><img src="screenshots/thumbs/01_search_screen_dark.jpg" width="200" alt="Search screen Dark" /></td>
+    <td><img src="screenshots/thumbs/01_search_screen_light.jpg" width="200" alt="Search screen Light" /></td>
   </tr>
   <tr>
-    <td>
-      <a href="screenshots/02_queue_screen_amoled.jpg">
-        <img src="screenshots/thumbs/02_queue_screen_amoled.jpg" alt="Queue screen (AMOLED)" width="200" />
-      </a>
-    </td>
-    <td>
-      <a href="screenshots/02_queue_screen_dark.jpg">
-        <img src="screenshots/thumbs/02_queue_screen_dark.jpg" alt="Queue screen (dark)" width="200" />
-      </a>
-    </td>
-    <td>
-      <a href="screenshots/02_queue_screen_light.jpg">
-        <img src="screenshots/thumbs/02_queue_screen_light.jpg" alt="Queue screen (light)" width="200" />
-      </a>
-    </td>
+    <td style="text-align: center;">Search (AMOLED)</td>
+    <td style="text-align: center;">Search (Dark)</td>
+    <td style="text-align: center;">Search (Light)</td>
   </tr>
   <tr>
-    <td>
-      <a href="screenshots/03_drawer_amoled.jpg">
-        <img src="screenshots/thumbs/03_drawer_amoled.jpg" alt="Navigation drawer (AMOLED)" width="200" />
-      </a>
-    </td>
-    <td>
-      <a href="screenshots/03_drawer_dark.jpg">
-        <img src="screenshots/thumbs/03_drawer_dark.jpg" alt="Navigation drawer (dark)" width="200" />
-      </a>
-    </td>
-    <td>
-      <a href="screenshots/03_drawer_light.jpg">
-        <img src="screenshots/thumbs/03_drawer_light.jpg" alt="Navigation drawer (light)" width="200" />
-      </a>
-    </td>
+    <td><img src="screenshots/thumbs/02_queue_screen_amoled.jpg" width="200" alt="Queue screen AMOLED" /></td>
+    <td><img src="screenshots/thumbs/02_queue_screen_dark.jpg" width="200" alt="Queue screen Dark" /></td>
+    <td><img src="screenshots/thumbs/02_queue_screen_light.jpg" width="200" alt="Queue screen Light" /></td>
   </tr>
   <tr>
-    <td>
-      <a href="screenshots/04_settings_screen_amoled.jpg">
-        <img src="screenshots/thumbs/04_settings_screen_amoled.jpg" alt="Settings screen (AMOLED)" width="200" />
-      </a>
-    </td>
-    <td>
-      <a href="screenshots/04_settings_screen_dark.jpg">
-        <img src="screenshots/thumbs/04_settings_screen_dark.jpg" alt="Settings screen (dark)" width="200" />
-      </a>
-    </td>
-    <td>
-      <a href="screenshots/04_settings_screen_light.jpg">
-        <img src="screenshots/thumbs/04_settings_screen_light.jpg" alt="Settings screen (light)" width="200" />
-      </a>
-    </td>
+    <td style="text-align: center;">Queue (AMOLED)</td>
+    <td style="text-align: center;">Queue (Dark)</td>
+    <td style="text-align: center;">Queue (Light)</td>
   </tr>
 </table>
 
