@@ -1,5 +1,5 @@
 <h1 align="center">
-  <img src="assets/logo.svg" width="28" alt="EverythingClient Logo"><br>
+  <img src="assets/logo.svg" width="28" alt="EverythingClient Logo" valign="middle">
   EverythingClient
 </h1>
 
