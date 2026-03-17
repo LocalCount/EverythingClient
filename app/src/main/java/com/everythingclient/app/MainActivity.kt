@@ -1051,7 +1051,7 @@ fun EverythingClientAppContent(
                                     val animSpec: FiniteAnimationSpec<Float> =
                                         if (closeFast) tween(140, easing = EaseOutCubic)
                                         else spring(Spring.DampingRatioNoBouncy, Spring.StiffnessMediumLow)
-                                    scope.launch {
+                                    drawerAnimJob = scope.launch {
                                         animate(
                                             initialValue  = drawerOffsetPx,
                                             targetValue   = if (snapOpen) drawerWidthPx else 0f,
