@@ -28,7 +28,6 @@ import androidx.compose.foundation.lazy.itemsIndexed
 import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.CircleShape
-import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.foundation.basicMarquee
 import androidx.compose.material.icons.Icons
@@ -256,11 +255,11 @@ fun SmallIconChip(
     content:   @Composable () -> Unit,
 ) {
     val bg     = if (selected) BrandOrange.copy(alpha = 0.15f)
-                 else MaterialTheme.colorScheme.surfaceVariant.copy(alpha = 0.5f)
+    else MaterialTheme.colorScheme.surfaceVariant.copy(alpha = 0.5f)
     val border = if (selected) BrandOrange.copy(alpha = 0.5f)
-                 else MaterialTheme.colorScheme.outlineVariant.copy(alpha = 0.7f)
+    else MaterialTheme.colorScheme.outlineVariant.copy(alpha = 0.7f)
     val tint   = if (selected) BrandOrange
-                 else MaterialTheme.colorScheme.onSurfaceVariant
+    else MaterialTheme.colorScheme.onSurfaceVariant
 
     Box(
         modifier         = modifier
@@ -735,34 +734,6 @@ fun PagingSearchContent(
                         .padding(vertical = 8.dp)
                 )
             }
-        }
-    }
-}
-
-// ── Compact scrollbar (used by QueueScreen) ──────────────────────────────────
-
-@Composable
-fun SolidScrollbar(listState: LazyListState, modifier: Modifier = Modifier) {
-    val totalItems   by remember { derivedStateOf { listState.layoutInfo.totalItemsCount } }
-    val firstVisible by remember { derivedStateOf { listState.firstVisibleItemIndex } }
-    val visibleCount by remember { derivedStateOf { listState.layoutInfo.visibleItemsInfo.size } }
-
-    if (totalItems <= 0) return
-
-    val thumbFraction = (visibleCount.toFloat() / totalItems).coerceIn(0.05f, 1f)
-    val thumbOffset   = (firstVisible.toFloat() / totalItems).coerceIn(0f, 1f - thumbFraction)
-
-    Box(modifier = modifier.clip(RoundedCornerShape(3.dp)).background(MaterialTheme.colorScheme.outlineVariant.copy(alpha = 0.35f))) {
-        BoxWithConstraints(modifier = Modifier.fillMaxSize()) {
-            val trackHeight = maxHeight
-            Box(
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .height(trackHeight * thumbFraction)
-                    .offset(y = trackHeight * thumbOffset)
-                    .clip(RoundedCornerShape(3.dp))
-                    .background(BrandOrange.copy(alpha = 0.65f))
-            )
         }
     }
 }
