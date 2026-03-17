@@ -21,9 +21,6 @@ interface DownloadTaskDao {
     """)
     fun getActiveTasks(): Flow<List<DownloadTask>>
 
-    @Query("SELECT COUNT(*) FROM download_tasks WHERE status = 'PENDING' OR status = 'DOWNLOADING' OR status = 'PAUSED'")
-    suspend fun getActiveTaskCount(): Int
-
     @Query("SELECT * FROM download_tasks WHERE id = :id")
     suspend fun getTaskById(id: String): DownloadTask?
 

@@ -443,12 +443,10 @@ class SearchViewModel @Inject constructor(
         var inQuotes = false
 
         for (ch in query) {
-            when {
-                ch == '"'          -> { inQuotes = !inQuotes; current.append(ch) }
-                ch == ' ' && !inQuotes -> {
-                    if (current.isNotEmpty()) { tokens.add(current.toString()); current.clear() }
-                }
-                else               -> current.append(ch)
+            when (ch) {
+                '"'  -> { inQuotes = !inQuotes; current.append(ch) }
+                ' '  -> if (!inQuotes) { if (current.isNotEmpty()) { tokens.add(current.toString()); current.clear() } }
+                else -> current.append(ch)
             }
         }
         if (current.isNotEmpty()) tokens.add(current.toString())
