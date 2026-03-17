@@ -969,7 +969,13 @@ private fun NoProfilePlaceholder() {
 
 @Composable
 private fun ErrorPlaceholder(message: String, onRetry: () -> Unit) {
-    Box(modifier = Modifier.fillMaxSize().verticalScroll(rememberScrollState()), contentAlignment = Alignment.Center) {
+    Box(
+        modifier = Modifier
+            .fillMaxSize()
+            .imePadding()
+            .verticalScroll(rememberScrollState()),
+        contentAlignment = Alignment.Center
+    ) {
         Column(horizontalAlignment = Alignment.CenterHorizontally, modifier = Modifier.padding(40.dp)) {
             Surface(modifier = Modifier.size(80.dp), shape = MaterialTheme.shapes.extraLarge,
                 color = AccentRed.copy(alpha = 0.1f), contentColor = AccentRed) {

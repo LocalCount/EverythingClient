@@ -61,6 +61,7 @@ import kotlin.math.abs
 import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalDensity
+import androidx.compose.ui.platform.LocalFocusManager
 import androidx.compose.ui.platform.LocalSoftwareKeyboardController
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.ImeAction
@@ -662,6 +663,7 @@ fun MorphingSearchTab(
     searchInFolder: Boolean,
     onQueryChange:  (String) -> Unit,
     onSearchClick:  () -> Unit,
+    isDrawerOpen:   Boolean,
     modifier:       Modifier = Modifier
 ) {
     val keyboard       = LocalSoftwareKeyboardController.current
@@ -678,8 +680,8 @@ fun MorphingSearchTab(
         }
     }
 
-    LaunchedEffect(isSearchActive) {
-        if (isSearchActive) {
+    LaunchedEffect(isSearchActive, isDrawerOpen) {
+        if (isSearchActive && !isDrawerOpen) {
             delay(80)
             try { focusRequester.requestFocus() } catch (_: Exception) {}
         } else {
@@ -895,6 +897,8 @@ fun EverythingClientAppContent(
     // Spring animations use animate() which runs in a coroutine only on fling/snap.
     val drawerWidthDp = 300.dp
     val density       = LocalDensity.current
+    val focusManager  = LocalFocusManager.current
+    val keyboard      = LocalSoftwareKeyboardController.current
     val drawerWidthPx = with(density) { drawerWidthDp.toPx() }
     var drawerOffsetPx by remember { mutableFloatStateOf(0f) }
     val isDrawerOpen by remember { derivedStateOf { drawerOffsetPx > drawerWidthPx / 2f } }
@@ -936,6 +940,13 @@ fun EverythingClientAppContent(
         searchViewModel.navigateBack()
     }
     BackHandler(enabled = isDrawerOpen) { closeDrawer(false) }
+
+    LaunchedEffect(isDrawerOpen) {
+        if (isDrawerOpen) {
+            keyboard?.hide()
+            focusManager.clearFocus(force = true)
+        }
+    }
 
     val navigateTo: (Int) -> Unit = { index ->
         scope.launch {
@@ -1163,6 +1174,7 @@ fun EverythingClientAppContent(
                                                     searchInFolder = searchInFolder,
                                                     onQueryChange  = { searchViewModel.onSearchQueryChange(it) },
                                                     onSearchClick  = { navigateTo(0) },
+                                                    isDrawerOpen   = isDrawerOpen,
                                                     modifier       = Modifier.weight(sWeight)
                                                 )
 
