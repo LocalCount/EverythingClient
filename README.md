@@ -1,9 +1,9 @@
-<h1 style="text-align: center;">
-  <img src="assets/logo.svg" width="38" style="vertical-align: middle;" alt="EverythingClient Logo">
+<h1 align="center">
+  <img src="assets/logo.svg" width="28" alt="EverythingClient Logo"><br>
   EverythingClient
 </h1>
 
-<p style="text-align: center;">
+<p align="center">
   An Android frontend client for browsing and downloading files from an Everything HTTP server, with a fast, modern UI.
 </p>
 
