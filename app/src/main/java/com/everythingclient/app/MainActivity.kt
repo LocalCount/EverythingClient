@@ -49,6 +49,8 @@ import androidx.compose.ui.graphics.asImageBitmap
 import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.graphics.lerp
 import androidx.compose.ui.graphics.vector.ImageVector
+import androidx.compose.ui.layout.onGloballyPositioned
+import androidx.compose.ui.layout.positionInRoot
 import androidx.compose.foundation.gestures.awaitEachGesture
 import androidx.compose.foundation.gestures.awaitFirstDown
 import androidx.compose.ui.input.nestedscroll.NestedScrollConnection
@@ -903,6 +905,7 @@ fun EverythingClientAppContent(
     var drawerOffsetPx by remember { mutableFloatStateOf(0f) }
     val isDrawerOpen by remember { derivedStateOf { drawerOffsetPx > drawerWidthPx / 2f } }
     var isClosingByTap by remember { mutableStateOf(false) }
+    var topBarBottomPx by remember { mutableFloatStateOf(0f) }
     // Tracks the running open/close animation so a drag can cancel it instantly.
     var drawerAnimJob by remember { mutableStateOf<kotlinx.coroutines.Job?>(null) }
 
@@ -1023,7 +1026,7 @@ fun EverythingClientAppContent(
         Box(
             Modifier
                 .fillMaxSize()
-                .pointerInput(pagerState.currentPage, drawerWidthPx) {
+                .pointerInput(pagerState.currentPage, drawerWidthPx, topBarBottomPx) {
                     val velocityTracker = VelocityTracker()
                     awaitEachGesture {
                         val down = awaitFirstDown(requireUnconsumed = false, pass = PointerEventPass.Initial)
@@ -1070,11 +1073,14 @@ fun EverythingClientAppContent(
                                 val totalDy = abs(change.position.y - down.position.y)
                                 if (totalDx > viewConfiguration.touchSlop && totalDx > totalDy) {
                                     val goingRight = change.position.x > down.position.x
+                                    val isTopBarHit = topBarBottomPx > 0f && down.position.y <= topBarBottomPx
                                     isOurDrag = when {
                                         // Rightward drag on page 0: always claimable — even mid
                                         // tap-close animation. We cancel the job below so there's
                                         // no fighting between animate() and the gesture handler.
-                                        goingRight && pagerState.currentPage == 0 && drawerOffsetPx < drawerWidthPx ->
+                                        goingRight &&
+                                            drawerOffsetPx < drawerWidthPx &&
+                                            (pagerState.currentPage == 0 || (pagerState.currentPage == 1 && isTopBarHit)) ->
                                             true
                                         // Leftward drag: only when drawer is open and not tap-closing
                                         !goingRight && drawerOffsetPx > 0f && !isClosingByTap ->
@@ -1141,7 +1147,14 @@ fun EverythingClientAppContent(
                     modifier       = Modifier.fillMaxSize(),
                     containerColor = MaterialTheme.colorScheme.background,
                     topBar = {
-                        Box(modifier = Modifier.fillMaxWidth().wrapContentHeight()) {
+                        Box(
+                            modifier = Modifier
+                                .fillMaxWidth()
+                                .wrapContentHeight()
+                                .onGloballyPositioned { coords ->
+                                    topBarBottomPx = coords.positionInRoot().y + coords.size.height.toFloat()
+                                }
+                        ) {
                             AnimatedVisibility(
                                 visible = !isAnySelectionMode,
                                 enter = fadeIn(),
